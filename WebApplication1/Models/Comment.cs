@@ -9,6 +9,5 @@ namespace WebApplication1.Models
         public required string Content { get; set; }
         public DateTime CreatedAt { get; set; } 
         public Guid ArticleId { get; set; }
-        public Article Article { get; set; } = null!;
     }
 }

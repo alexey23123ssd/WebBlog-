@@ -16,6 +16,6 @@
         <p class="my-2">@Model.Description</p>
     </div>
     <div class="card-footer p-0 text-center">
-        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-dark btn-sm">READ MORE</a>
+        <a asp-controller="ArticleDetails" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-dark btn-sm">READ MORE</a>
     </div>
 </div>

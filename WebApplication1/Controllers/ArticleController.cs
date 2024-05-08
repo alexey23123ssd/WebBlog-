@@ -32,12 +32,13 @@ namespace WebApplication1.Controllers
             return View("Add");
         }
 
-        [Route("CreateArticle1")]
+        [Route("CreateArticle")]
         [ValidationFilter]
         [HttpPost]
-        public IActionResult CreateArticle([FromBody] Article article)
+        public IActionResult CreateArticle([FromForm] Article article)
         {
             _articleService.Post(article);
+
             return RedirectToAction("Index");
         }
 
@@ -47,6 +48,7 @@ namespace WebApplication1.Controllers
         public IActionResult UpdateContent([FromRoute] Guid id,[FromBody] Article content)
         {
             _articleService.Update(id, content);
+
             return Ok();
         }
 
@@ -56,6 +58,7 @@ namespace WebApplication1.Controllers
         public IActionResult CreateComment([FromRoute] Guid id, [FromBody] Comment comment)
         {
             _commentService.Add(id, comment);
+
             return Ok();
         }
 
@@ -65,6 +68,7 @@ namespace WebApplication1.Controllers
         public IActionResult DeleteComment([FromRoute] Guid id)
         {
             _commentService.Delete(id);
+
             return Ok();
         }
     }

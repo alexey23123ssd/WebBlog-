@@ -23,6 +23,7 @@ namespace WebApplication1.Services
         public void Post(Article article)
         {
             article.Id = Guid.NewGuid();
+
             _context.Articles.Add(new Article
             {
                 Id = article.Id,
@@ -30,6 +31,8 @@ namespace WebApplication1.Services
                 Description = article.Description,
                 Content = article.Content
             });
+
+            _context.SaveChanges();
         }
 
         public Article Update(Guid id, Article article)

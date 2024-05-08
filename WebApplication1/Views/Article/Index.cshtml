@@ -112,7 +112,10 @@
                             <small class="small text-muted">
                                 January 24 2019
                                 <span class="px-2">-</span>
-                                <a href="#" class="text-muted">32 Comments</a>
+                                @if(Model[0].Comments != null)
+                                {
+                                    <a href="#" class="text-muted">@Model[0].Comments.Count</a>
+                                }
                             </small>
                         </div>
                         <div class="card-body">
@@ -125,7 +128,9 @@
                         <div class="card-footer d-flex justify-content-between align-items-center flex-basis-0">
                             <button class="btn btn-primary circle-35 mr-4"><i class="ti-back-right"></i></button>
                             <a asp-action="Details" asp-route-id="@Model[0].Id" class="btn btn-outline-dark btn-sm">READ MORE</a>
-                            <a href="#" class="text-dark small text-muted">By : Joe Mitchell</a>
+                            <a asp-controller="Comment" asp-action="CreateComment" method ="get" asp-route-id="@Model[0].Id" 
+                                class="btn btn-outline-dark btn-sm">Add comment</a>
+
                         </div>
                     </div>
                 }
@@ -134,17 +139,18 @@
                 {
                     <div class="row">
                         <div class="col-lg-6">
-                            <partial name="_PostPartial" model=Model[i]>
+                            <partial name="_ArticlePartial" model=Model[i]>
                         </div>
                         @if (i + 1 < Model.Length)
                         {
                             <div class="col-lg-6">
-                                <partial name="_PostPartial" model=Model[i+1]>
+                                <partial name="_ArticlePartial" model=Model[i+1]>
                             </div>
                         }
                     </div>
                 }
-                <button class="btn btn-primary btn-block my-4">Load More Posts</button>
+                <a asp-action="CreateArticle" asp-controller="Article"
+                    method="get" class="btn btn-primary btn-block my-4">Create New Article</a>
             </div>
 
             <!-- Sidebar -->

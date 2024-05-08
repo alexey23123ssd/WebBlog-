@@ -19,11 +19,14 @@ namespace WebApplication1.Services
             {
                 throw new ArgumentNullException("Post doesnt exist");
             }
+
             if(comment == null)
             {
                 throw new ArgumentNullException();
             }
+
             comment.Id = Guid.NewGuid();
+
             _context.Comments.Add(new Comment
             {
                 Id = comment.Id,
@@ -31,7 +34,9 @@ namespace WebApplication1.Services
                 CreatedAt = DateTime.UtcNow,
                 ArticleId = id
             });
+
             _context.SaveChanges();
+
             return comment;
         }
 

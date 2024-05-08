@@ -33,9 +33,7 @@ namespace WebApplication1
 
             app.UseAuthorization();
 
-            app.MapControllers();
-
-            app.UseRouteHandle();   
+            app.MapControllers();   
 
             app.Run();
         }
